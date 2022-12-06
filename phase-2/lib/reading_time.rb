@@ -15,17 +15,20 @@
 # Example tests
 - if we passed a string containing 200 words, we would expect it to return '1 minute'
 - if we passed an empty string, it should return '0 minutes'
-- if we passed 100 words we would epect '0.5 minutes'
+- if we passed 100 words we would epect '0.50 minutes'
 - if we passed anything that was not a string we should expect an error
 
 =end
 
 def reading_time(string)
-  time_for_word = 60 / 200
+  fail "Please provide a string!" if !string.is_a? String
+  time_for_word = 60 / 200.0
   time_to_read = time_for_word * string.split.length / 60
-  return "#{time_to_read} minutes"
+  return "#{time_to_read.round(3)} minutes"
 end
 
-string1 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis magna eros, elementum dictum lorem ac, consequat mattis eros. Donec et scelerisque quam. Nunc dignissim maximus ex, interdum lacinia nisl luctus nec. Aliquam lorem nisl, scelerisque nec eros venenatis, mollis viverra felis. Sed sollicitudin et turpis a fermentum. Nulla pulvinar iaculis quam ut viverra. Aenean et arcu iaculis, vehicula urna a, sollicitudin odio. Vivamus tempor massa non orci commodo, sit amet tincidunt tellus posuere. Aenean risus urna, tristique et nunc et, blandit convallis lectus. Morbi quis enim velit. Etiam ut purus in nulla laoreet viverra. Morbi sit amet nisi vitae lorem vehicula feugiat. Donec id urna ac eros accumsan sodales at nec enim. Duis sagittis rutrum nulla, vitae lobortis lectus malesuada a. Vestibulum aliquet elit id massa fermentum tincidunt. In varius sed massa tempus ultrices. "
+string1 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam risus turpis, mollis sit amet nibh et, maximus blandit dolor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vivamus luctus tortor sit amet risus fringilla, quis tincidunt enim luctus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam posuere nunc augue, sed malesuada nisi accumsan id. Pellentesque eleifend maximus lorem a elementum. Sed pretium risus sed tellus eleifend, non molestie metus semper. Nullam mollis facilisis justo et eleifend. In rutrum mi nec quam interdum elementum.
 
-puts reading_time(string1)
+Aenean in tincidunt felis. Maecenas ut urna nec ipsum venenatis aliquet et eu nunc. Phasellus hendrerit suscipit purus, sit amet facilisis velit. Pellentesque sagittis metus ac diam sollicitudin pharetra. Phasellus tellus risus, malesuada non urna id, lacinia tempus ante. Maecenas commodo facilisis interdum. Duis mattis, augue sit amet vulputate porta, erat leo laoreet enim, eu cursus mauris eros eget odio. Nunc faucibus tempus quam ac porta. Vestibulum scelerisque diam sed metus ullamcorper, non pellentesque tortor pulvinar. Vivamus dignissim porta felis. Cras ut tortor felis. Curabitur vel lorem ac orci ultrices ultricies. Integer facilisis elit vel placerat tincidunt. Curabitur volutpat pellentesque quam, ac fermentum dolor blandit sed. Quisque pellentesque lacus. "
+
+# puts reading_time("Aenean in tincidunt felis. Maecenas ut urna nec ipsum venenatis aliquet et eu nunc. Phasellus hendrerit suscipit purus, sit amet facilisis velit. Pellentesque sagittis metus ac diam sollicitudin pharetra. Phasellus tellus risus, malesuada non urna id, lacinia tempus ante. Maecenas commodo facilisis interdum. Duis mattis, augue sit amet vulputate porta, erat leo laoreet enim, eu cursus mauris eros eget odio. Nunc faucibus tempus quam ac porta. Vestibulum scelerisque diam sed metus ullamcorper, non pellentesque tortor pulvinar. Vivamus dignissim porta felis. Cras ut tortor felis. Curabitur vel lorem ac orci ultrices ultricies. Integer facilisis elit vel placerat tincidunt. Curabitur volutpat pellentesque quam, ac fermentum dolor blandit sed. Quisque pellentesque lacus. ")
