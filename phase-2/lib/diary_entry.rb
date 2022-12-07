@@ -2,7 +2,7 @@ class DiaryEntry
     def initialize(title, contents) 
         @title = title
         @contents = contents
-        @end_point = 0
+        @start_point = 0
     end
 
     def title
@@ -22,11 +22,11 @@ class DiaryEntry
     end
 
     def reading_chunk(wpm, minutes)
-        @contents[0..@end_point] 
-        @end_point = wpm / minutes
+        end_point = @start_point + wpm / minutes
+        contents_array = @contents.split(" ")
+        string = contents_array[@start_point...end_point].join(" ")
+        @start_point = end_point
+        @start_point = 0 if @start_point >= @contents.split(" ").length
+        return string
     end
 end
-
-diary = DiaryEntry.new("journal", "rsf sdf sdf")
-
-p diary.reading_time(100)
