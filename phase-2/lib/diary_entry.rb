@@ -2,6 +2,7 @@ class DiaryEntry
     def initialize(title, contents) 
         @title = title
         @contents = contents
+        @end_point = 0
     end
 
     def title
@@ -18,6 +19,11 @@ class DiaryEntry
 
     def reading_time(wpm)
         return @contents.split(" ").length / wpm
+    end
+
+    def reading_chunk(wpm, minutes)
+        @contents[0..@end_point] 
+        @end_point = wpm / minutes
     end
 end
 
